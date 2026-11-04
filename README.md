@@ -1,5 +1,7 @@
 # selenium_login
 
+[![Selenium Login Test](https://github.com/jozef-garaj/selenium_login/actions/workflows/selenium.yml/badge.svg)](https://github.com/jozef-garaj/selenium_login/actions/workflows/selenium.yml)
+
 Selenium test that logs in to [saucedemo.com](https://www.saucedemo.com/) as `standard_user`
 and checks that the **Products** page opens.
 
@@ -19,3 +21,11 @@ python login_test.py
 
 On success it prints `Login successful`; otherwise it fails with an `AssertionError`
 or a `TimeoutException`.
+
+To run without a visible browser window, set `MOZ_HEADLESS=1`.
+
+## CI
+
+GitHub Actions ([.github/workflows/selenium.yml](.github/workflows/selenium.yml)) runs the test
+headless on every push and pull request to `main`, daily at 06:00 UTC, and on demand
+from the **Actions** tab (**Run workflow**).

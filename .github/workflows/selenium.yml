@@ -1,0 +1,33 @@
+name: Selenium Login Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:        # manual run from the Actions tab
+  schedule:
+    - cron: '0 6 * * *'     # daily at 06:00 UTC (tests a live site)
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Firefox
+        uses: browser-actions/setup-firefox@v1
+
+      - name: Run login test
+        env:
+          MOZ_HEADLESS: '1'   # run Firefox without a display
+        run: python login_test.py

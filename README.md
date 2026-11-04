@@ -27,5 +27,5 @@ To run without a visible browser window, set `MOZ_HEADLESS=1`.
 ## CI
 
 GitHub Actions ([.github/workflows/selenium.yml](.github/workflows/selenium.yml)) runs the test
-headless on every push and pull request to `main`, daily at 06:00 UTC, and on demand
+headless on every push and pull request to `main`, on the 1st and 15th of each month at 06:00 UTC (about every 2 weeks), and on demand
 from the **Actions** tab (**Run workflow**).
